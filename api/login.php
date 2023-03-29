@@ -14,11 +14,11 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 if ($request_method == "POST") {
     $username = $request_data["username"];
     $password = $request_data["password"];
-    $points = $request_data["points"];
-
+    
     foreach($users as $user){
-        if ($user["username"] == $username && $user["password"] == $password) {
+        if ($user["username"] == $username && $user["password"] == $password ) {
             
+            $points = $user["points"];
             $loggedInUser = [
                 "username" => $username,
                 "password" => $password,

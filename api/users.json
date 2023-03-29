@@ -1,12 +1,12 @@
 [
     {
         "username": "Oliwer",
-        "password": "oliwer",
+        "password": "123",
         "points": 0
     },
     {
-        "username": "erica",
-        "password": "oliwer",
-        "points": 1
+        "username": "yoyo",
+        "password": "123",
+        "points": 0
     }
 ]

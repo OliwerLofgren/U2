@@ -2,9 +2,9 @@
 
 ini_set("dispaly_errors", 1);
 
-require_once "function.php";
+require_once "functions.php";
 
-$filename = "points.json";
+$filename = "users.json";
 $data = ["points" => 0];
 
 if (!file_exists($filename)) {
@@ -25,8 +25,8 @@ if ($method == "POST") {
         $data["points"] += $points;
 
     }
-
-    file_put_contents($filename, $data);
+    $json = json_encode($data);
+    file_put_contents($filename, $json);
     sendJSON($data);
 }
 $error = ["error" => "Can't load points"];

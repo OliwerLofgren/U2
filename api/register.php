@@ -50,7 +50,7 @@ if ($request_method == "POST") {
     $new_user = [
         "username" => $username,
         "password" => $password,
-        "points" => 1
+        "points" => 0
     ];
 
     $users[] = $new_user;
