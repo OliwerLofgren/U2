@@ -1,18 +1,12 @@
 [
     {
-        "username": "hththt",
-        "password": "123"
-    },
-    {
-        "username": "hghiosgiho",
-        "password": "ijosdjio"
-    },
-    {
         "username": "Oliwer",
-        "password": "123"
+        "password": "oliwer",
+        "points": 0
     },
     {
-        "username": "Oliwer",
-        "password": "123"
+        "username": "erica",
+        "password": "oliwer",
+        "points": 1
     }
 ]

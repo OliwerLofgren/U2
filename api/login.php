@@ -1,21 +1,40 @@
-<?php ini_set("display_errors, 1"); 
+<?php ini_set("display_errors", 1); 
 require_once("functions.php");
 ?>
 <?php 
+$filename = "api/users.json";
 $users = [];
-$filename = "users.json";
-
 $user_json = file_get_contents($filename);
 $users = json_decode($user_json, true);
 
-$requst_method = $_SERVER["REQUEST_METHOD"];
+$request_json = file_get_contents("php://input");
+$request_data = json_decode($request_json, true);
+$request_method = $_SERVER["REQUEST_METHOD"];
 
-if ($requst_method == "GET") {
-    if (isset($users["username"], $users["password"])) {
-        $message = ["message" => "Success!"];
-        sendJSON($message);
-    } else {
-        $message = ["message" => "Please register!"]
+if ($request_method == "POST") {
+    $username = $request_data["username"];
+    $password = $request_data["password"];
+    $points = $request_data["points"];
+
+    foreach($users as $user){
+        if ($user["username"] == $username && $user["password"] == $password) {
+            
+            $loggedInUser = [
+                "username" => $username,
+                "password" => $password,
+                "points" => $points
+            ];
+
+            $users[] = $loggedInUser;
+            // $user_json = json_encode($users, JSON_PRETTY_PRINT);
+            // file_get_contents($filename, $user_json);
+            sendJSON($loggedInUser);
+                
+        }else {
+                $message = ["message" => "Please register!"];
+                sendJSON($message, 404);
+        }
     }
+   
 }
 ?>

@@ -46,10 +46,11 @@ if ($request_method == "POST") {
         $error = ["error" => "Please type a Username and Password"];
         sendJSON($error, 400);
     }
-
+    
     $new_user = [
         "username" => $username,
         "password" => $password,
+        "points" => 1
     ];
 
     $users[] = $new_user;
