@@ -37,14 +37,14 @@ if ($request_method == "POST") {
 
     foreach($users as $user){
         if ($user["username"] == $username) {
-            $error = ["error" => "Conflict! Username is already taken, please try again!"];
-            sendJSON($error, 409);
+            $message = ["message" => "Conflict! Username is already taken, please try again!"];
+            sendJSON($message, 409);
         }
     }
 
     if ($password == "" or $username == "") {
-        $error = ["error" => "Please type a Username and Password"];
-        sendJSON($error, 400);
+        $message = ["message" => "Please type a Username and Password"];
+        sendJSON($message, 400);
     }
     
     $new_user = [

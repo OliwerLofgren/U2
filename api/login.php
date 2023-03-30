@@ -25,16 +25,16 @@ if ($request_method == "POST") {
                 "points" => $points
             ];
 
-            $users[] = $loggedInUser;
-            // $user_json = json_encode($users, JSON_PRETTY_PRINT);
             // file_get_contents($filename, $user_json);
+            $users[] = $loggedInUser;
+            $user_json = json_encode($users, JSON_PRETTY_PRINT);
             sendJSON($loggedInUser);
                 
-        }else {
-                $message = ["message" => "Please register!"];
-                sendJSON($message, 404);
         }
     }
+    $message = ["message" => "Not found!"];
+    sendJSON($message, 404);
+    }
    
-}
+
 ?>

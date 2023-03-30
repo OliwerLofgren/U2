@@ -2,11 +2,21 @@
     {
         "username": "Oliwer",
         "password": "123",
-        "points": 0
+        "points": 2
     },
     {
         "username": "yoyo",
         "password": "123",
         "points": 0
+    },
+    {
+        "username": "Sebbe",
+        "password": "123",
+        "points": 0
+    },
+    {
+        "username": "thea",
+        "password": "123",
+        "points": 3
     }
 ]
