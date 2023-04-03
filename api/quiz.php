@@ -27,15 +27,14 @@ file_put_contents($dogs_json, $data);
 array_splice($array_of_all_the_dogs, 0, 2);
 
 $alternatives = [];
+$i = 0;
 
 while (count($alternatives) <4) {
-    $i = 0;
     $random = array_rand($array_of_all_the_dogs, 1);
     $new_dog = [
         "name" => $array_of_all_the_dogs[$random]["name"],
         "url" => $array_of_all_the_dogs[$random]["url"],
     ];
-    $alternatives[] = $new_dog;
     if(!in_array($new_dog, $alternatives)){
         $alternatives[] = $new_dog;
     }

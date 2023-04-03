@@ -18,5 +18,15 @@
         "username": "thea",
         "password": "123",
         "points": 3
+    },
+    {
+        "username": "Erica",
+        "password": "123",
+        "points": 0
+    },
+    {
+        "username": "Elliot",
+        "password": "123",
+        "points": 2
     }
 ]

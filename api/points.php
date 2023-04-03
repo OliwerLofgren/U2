@@ -9,8 +9,8 @@ $filename = "api/users.json";
 
 $inputData = json_decode(file_get_contents("php://input"), true);
 
-$json = file_get_contents($filename);
-$userDatabase = json_decode($json, true);
+$user_json = file_get_contents($filename);
+$user_data = json_decode($user_json, true);
 
 
 if ($method == "POST") {
@@ -18,12 +18,12 @@ if ($method == "POST") {
     $username = $inputData["username"];
     $password = $inputData["password"];
 
-    for($i = 0; $i < count($userDatabase); $i++){
+    for($i = 0; $i < count($user_data); $i++){
 
-        if ($userDatabase[$i]["username"] == $username) {
-            $userDatabase[$i]["points"] = $userDatabase[$i]["points"] + $inputData["points"];
-            $newpoints = file_put_contents($filename, json_encode($userDatabase, JSON_PRETTY_PRINT));
-            sendJSON(["points" => $userDatabase[$i]["points"]]);
+        if ($user_data[$i]["username"] == $username) {
+            $user_data[$i]["points"] = $user_data[$i]["points"] + $inputData["points"];
+            file_put_contents($filename, json_encode($user_data, JSON_PRETTY_PRINT));
+            sendJSON(["points" => $user_data[$i]["points"]]);
         }
     }
 
@@ -33,7 +33,7 @@ if ($method == "POST") {
 if ($method == "GET") {
 
         // Define the comparison function
-    function cmp($a, $b) {
+    function compare($a, $b) {
         if ($a["points"] == $b["points"]) {
             return 0;
         }
@@ -41,21 +41,21 @@ if ($method == "GET") {
     }
 
     // Sort the array using the comparison function
-    usort($userDatabase, "cmp");
+    usort($user_data, "compare");
 
     // Shorten and send the sorted array
-    $firstFive = array_slice($userDatabase, 0, 5);
+    $top_five = array_slice($user_data, 0, 5);
 
-    $usernamdeAndPoints = [];
-    foreach($firstFive as $user){
-        $oneUser = [
+    $user_and_points = [];
+    foreach($top_five as $user){
+        $user = [
             "username" => $user["username"],
             "points" => $user["points"],
         ];
-        $usernamdeAndPoints[] = $oneUser;
+        $user_and_points[] = $user;
     };
 
-    sendJSON($usernamdeAndPoints);
+    sendJSON($user_and_points);
 }
 
 

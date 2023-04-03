@@ -19,16 +19,16 @@ if ($request_method == "POST") {
         if ($user["username"] == $username && $user["password"] == $password ) {
             
             $points = $user["points"];
-            $loggedInUser = [
+            $logged_user = [
                 "username" => $username,
                 "password" => $password,
                 "points" => $points
             ];
 
             // file_get_contents($filename, $user_json);
-            $users[] = $loggedInUser;
+            $users[] = $logged_user;
             $user_json = json_encode($users, JSON_PRETTY_PRINT);
-            sendJSON($loggedInUser);
+            sendJSON($logged_user);
                 
         }
     }
