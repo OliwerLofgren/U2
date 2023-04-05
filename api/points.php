@@ -7,10 +7,6 @@ require_once "functions.php";
 
 $filename = "api/users.json";
 
-if (!file_exists($filename)) {
-    $message = ["message" => $filename . "does not exist!"];
-    sendJSON($message, 404);
-}
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 $allowed_methods = ["POST", "GET"];
