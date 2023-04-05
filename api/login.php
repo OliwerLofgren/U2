@@ -25,7 +25,6 @@ if ($request_method == "POST") {
                 "points" => $points
             ];
 
-            // file_get_contents($filename, $user_json);
             $users[] = $logged_user;
             $user_json = json_encode($users, JSON_PRETTY_PRINT);
             sendJSON($logged_user);
@@ -35,6 +34,7 @@ if ($request_method == "POST") {
     $message = ["message" => "Not found!"];
     sendJSON($message, 404);
     }
-   
+   $message = ["message" => "Wrong kind of method!"];
+   sendJSON($message, 400);
 
 ?>

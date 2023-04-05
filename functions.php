@@ -6,4 +6,11 @@ function sendJSON($data, $status_code = 200){
     echo $json;
     exit();
 }
+function check_answer($image, $dog){
+    if (str_contains($image["name"], $dog)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

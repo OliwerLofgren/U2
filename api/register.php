@@ -5,11 +5,6 @@ require_once("functions.php");
 
 
 <?php 
-
-$request_method = $_SERVER["REQUEST_METHOD"];
-
-
-
 $filename = "api/users.json";
 $users = [];
 $user_json = file_get_contents($filename);
@@ -17,6 +12,8 @@ $users = json_decode($user_json, true);
 
 $request_json = file_get_contents("php://input");
 $request_data = json_decode($request_json, true);
+
+$request_method = $_SERVER["REQUEST_METHOD"];
 
 if ($request_method == "POST") {
     if(!file_exists($filename)){
@@ -36,7 +33,7 @@ if ($request_method == "POST") {
 
     if ($password == "" or $username == "") {
         $message = ["message" => "Please type a Username and Password"];
-        sendJSON($message, 400);
+        sendJSON($message, 404);
     }
     
     $new_user = [
@@ -52,4 +49,6 @@ if ($request_method == "POST") {
     sendJSON($new_user);
 
 }
+$message = ["message" => "Wrong kind of method!"];
+   sendJSON($message, 400);
 ?>

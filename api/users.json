@@ -1,32 +1,32 @@
 [
     {
+        "username": "Sebbe",
+        "password": "123",
+        "points": 6
+    },
+    {
+        "username": "Erica",
+        "password": "123",
+        "points": 2
+    },
+    {
         "username": "Oliwer",
         "password": "123",
         "points": 2
     },
     {
-        "username": "yoyo",
+        "username": "Elin",
         "password": "123",
         "points": 0
     },
     {
-        "username": "Sebbe",
+        "username": "404",
         "password": "123",
-        "points": 0
+        "points": 1
     },
     {
-        "username": "thea",
+        "username": "Teapot",
         "password": "123",
-        "points": 3
-    },
-    {
-        "username": "Erica",
-        "password": "123",
-        "points": 0
-    },
-    {
-        "username": "Elliot",
-        "password": "123",
-        "points": 2
+        "points": 5
     }
 ]
