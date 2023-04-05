@@ -1,8 +1,15 @@
 <?php ini_set("display_errors", 1); 
 require_once("functions.php");
 ?>
+
 <?php 
 $filename = "api/users.json";
+
+if (!file_exists($filename)) {
+    $message = ["message" => $filename . " " . "does not exist!"];
+    sendJSON($message, 404);
+}
+
 $users = [];
 $user_json = file_get_contents($filename);
 $users = json_decode($user_json, true);

@@ -8,17 +8,17 @@ $request_method = $_SERVER["REQUEST_METHOD"];
 
 if ($request_method == "GET") {
     $filename = 'images/images/';
-    $direction = scandir($filename);
+    $all_dogs_files = scandir($filename);
     $dogs_json = "dogs.json";
-
-    if (!file_exists($dogs_json)) {
-        $message = ["message" => $dogs_json . "does not exist!"];
+    
+    if (count($all_dogs_files) == 0) {
+        $message = ["message" => "Images not found!"];
         sendJSON($message, 404);
     }
-    
+
     $array_of_all_the_dogs = [];
     
-    foreach($direction as $dog){
+    foreach($all_dogs_files as $dog){
         $dog_names = $dog;
         $replace_words = ["_", ".jpg"];
         $new_name = str_replace($replace_words, " ", $dog_names);

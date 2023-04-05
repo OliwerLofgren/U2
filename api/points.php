@@ -34,11 +34,13 @@ if ($request_method == "POST") {
 
         if ($user_data[$i]["username"] == $username) {
             $user_data[$i]["points"] = $user_data[$i]["points"] + $input_data["points"];
+
             file_put_contents($filename, json_encode($user_data, JSON_PRETTY_PRINT));
             sendJSON(["points" => $user_data[$i]["points"]]);
         }
     }
-
+    $message = ["message" => "User not found!"];
+    sendJSON($message, 404);
 } 
 
 
