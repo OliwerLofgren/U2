@@ -15,7 +15,7 @@ if ($request_method == "GET") {
         $message = ["message" => $dogs_json . "does not exist!"];
         sendJSON($message, 404);
     }
-
+    
     $array_of_all_the_dogs = [];
     
     foreach($direction as $dog){
